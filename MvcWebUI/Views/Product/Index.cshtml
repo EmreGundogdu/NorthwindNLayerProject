@@ -1,0 +1,15 @@
+﻿@model ProductListViewModel
+
+<h2>Product List</h2>
+<table>
+    @foreach (var product in Model.Products)
+    {
+        <tr>
+            <td>@product.ProductId</td>
+            <td>@product.ProductName</td>
+            <td>@product.QuantityPerUnit</td>
+            <td>@product.UnitPrice</td>
+            <td>@product.UnitsInStock</td>
+        </tr>
+    }
+</table>

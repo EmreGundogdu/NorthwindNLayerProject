@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Bussiness.Abstract
 {
-    public interface IProductService
+    public interface ICategoryService
     {
-        List<Product> GetAll();
-        List<Product> GetByCategory(int categoryId);
+        List<Category> GetAll();
     }
 }
