@@ -1,6 +1,7 @@
 ﻿using Bussiness.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
+using MvcWebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
