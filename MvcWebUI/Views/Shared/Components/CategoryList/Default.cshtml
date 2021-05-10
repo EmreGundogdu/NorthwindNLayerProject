@@ -2,10 +2,11 @@
 
 
 <h2>Category List</h2>
-<ul class="list-group">
+<div class="list-group">
+    <a href="/product/index" class="list-group-item">Tüm Ürünler</a>
     @foreach (var category in Model.Categories)
     {
-        <li class="list-group-item">@category.CategoryName</li>
+        <a href="/product/index?category=@category.CategoryId" class="list-group-item">@category.CategoryName</a>
     }
-</ul>
+</div>
     
