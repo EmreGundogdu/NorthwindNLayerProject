@@ -57,5 +57,13 @@ namespace MvcWebUI.Controllers
             TempData.Add("message", product.ProductName + " Sepetten Tek Bir Silindi");
             return RedirectToAction("Index");
         }
+        public IActionResult Complete()
+        {
+            var model = new ShippingDetailsViewModel
+            {
+                ShippingDetail = new ShippingDetail()
+            };
+            return View();
+        }
     }
 }
