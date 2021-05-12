@@ -1,4 +1,6 @@
 ﻿using Entities.DomainModels;
+using Microsoft.AspNetCore.Http;
+using MvcWebUI.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,19 +10,33 @@ namespace MvcWebUI.Helpers
 {
     public class CartSessionHelper : ICartSessionHelper
     {
-        public Cart cart()
+        private IHttpContextAccessor _httpContextAccessor;
+
+        public CartSessionHelper(IHttpContextAccessor httpContextAccessor)
         {
-            throw new NotImplementedException();
-        }
+            _httpContextAccessor = httpContextAccessor;
+        }        
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            _httpContextAccessor.HttpContext.Session.Clear();
         }
 
-        public void SetCart(Cart cart)
+        public Cart GetCart(string key)
         {
-            throw new NotImplementedException();
+            Cart cartToCheck = _httpContextAccessor.HttpContext.Session.GetBoject<Cart>(key);
+            if (cartToCheck==null)
+            {
+                SetCart(key,new Cart());
+                cartToCheck = _httpContextAccessor.HttpContext.Session.GetBoject<Cart>(key);
+            }
+            return cartToCheck;
+
+        }
+
+        public void SetCart(string key,Cart cart)
+        {
+            _httpContextAccessor.HttpContext.Session.SetObject(key, cart);
         }
     }
 }
