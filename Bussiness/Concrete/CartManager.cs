@@ -34,5 +34,14 @@ namespace Bussiness.Concrete
         {
             cart.CartLines.Remove(cart.CartLines.FirstOrDefault(c => c.Product.ProductId == productId));
         }
+        public void RemoveFromCartWithOnly(Cart cart, int productId)
+        {
+            CartLine cartLine = cart.CartLines.FirstOrDefault(c => c.Product.ProductId == productId);
+            if (cartLine != null)
+            {
+                cartLine.Quantity--;
+                return;
+            }            
+        }
     }
 }
