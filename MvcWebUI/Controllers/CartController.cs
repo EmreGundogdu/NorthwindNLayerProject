@@ -65,5 +65,12 @@ namespace MvcWebUI.Controllers
             };
             return View();
         }
+        [HttpPost]
+        public IActionResult Complete(ShippingDetail shippingDetail)
+        {
+            TempData.Add("message", "Siparişiniz Başarıyla Tamamlandı");
+            _cartSessionHelper.Clear();
+            return RedirectToAction("Index", "Cart");
+        }
     }
 }
