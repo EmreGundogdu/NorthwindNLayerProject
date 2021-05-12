@@ -23,17 +23,17 @@ namespace MvcWebUI.Controllers
         public IActionResult AddToCart(int productId)
         {
             Product product = _productService.GetById(productId);
-            var cart = _cartSessionHelper.GetCart();
+            var cart = _cartSessionHelper.GetCart("cart");
             _cartService.AddToCart(cart,product);
-            _cartSessionHelper.SetCart(cart);
+            _cartSessionHelper.SetCart("cart",cart);
             return RedirectToAction("Index","Product");
         }
         public IActionResult RemoveFromCart(int productId)
         {
             Product product = _productService.GetById(productId);
-            var cart = _cartSessionHelper.GetCart();
+            var cart = _cartSessionHelper.GetCart("cart");
             _cartService.RemoveFromCart(cart,productId);
-            _cartSessionHelper.SetCart(cart);
+            _cartSessionHelper.SetCart("cart", cart);
             return RedirectToAction("Index", "Product");
         }
     }

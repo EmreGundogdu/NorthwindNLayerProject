@@ -28,7 +28,7 @@ namespace Bussiness.Concrete
 
         public Product GetById(int productId)
         {
-            return _productDal.Get(p=>p.ProductId==productId)
+            return _productDal.Get(p => p.ProductId == productId);
         }
     }
 }
