@@ -1,7 +1,9 @@
 ﻿using Bussiness.Abstract;
 using Entities.Concrete;
+using Entities.DomainModels;
 using Microsoft.AspNetCore.Mvc;
 using MvcWebUI.Helpers;
+using MvcWebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +37,14 @@ namespace MvcWebUI.Controllers
             _cartService.RemoveFromCart(cart,productId);
             _cartSessionHelper.SetCart("cart", cart);
             return RedirectToAction("Index", "Product");
+        }
+        public IActionResult Index()
+        {
+            var model = new CartListViewModel
+            {
+                Cart = _cartSessionHelper.GetCart("cart")
+            };
+            return View(model);
         }
     }
 }
